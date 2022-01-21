@@ -1,7 +1,7 @@
 # ZlibNGSharpMinimal
 
 A .NET 6 C# interop wrapper for [zlib-ng's](https://github.com/zlib-ng/zlib-ng) basic inflate and deflate operations.
-Written for and bundled with zlib-ng v2.0.6.
+Written for and bundled with zlib-ng v2.0.6, for `win-x64` and `linux-x64`.
 
 ```csharp
 byte[] data = new byte[512];

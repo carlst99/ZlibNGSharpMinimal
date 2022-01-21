@@ -44,7 +44,7 @@ internal static unsafe class ZngInflateNative
 
     /// <summary>
     /// This function is equivalent to <see cref="zng_inflateEnd(ZngStream*)"/>
-    /// followed by <see cref="_InflateInit(ZngStream*)"/>,
+    /// followed by <see cref="zng_inflateInit_(ZngStream*, byte*, int)"/>,
     /// but does not free and reallocate the internal decompression state.
     /// The stream will keep attributes that may have been set by inflateInit2.
     /// </summary>

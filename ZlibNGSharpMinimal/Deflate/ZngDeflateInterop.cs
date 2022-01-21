@@ -20,7 +20,7 @@ internal static unsafe class ZngDeflateNative
     /// <param name="version">The expected version of the zlib library.</param>
     /// <param name="streamSize">The size of the <see cref="ZngStream"/> object.</param>
     /// <returns>
-    /// <see cref="CompressionResult>OK"/> on success,
+    /// <see cref="CompressionResult.OK"/> on success,
     /// <see cref="CompressionResult.MemoryError"/> if there was not enough memory,
     /// <see cref="CompressionResult.StreamEnd"/> if the level is not valid,
     /// or <see cref="CompressionResult.VersionError"/> if the zlib library version is incompatible with the caller's assumed version.

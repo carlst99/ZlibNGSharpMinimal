@@ -3,10 +3,22 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+
+    <!-- Package info -->
+    <Version>1.0.0</Version>
+    <Description>A minimal C# interop wrapper for zlib-ng's basic deflate and inflate operations.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ZlibNGSharpMinimal.Native\ZlibNGSharpMinimal.Native.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)..\README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

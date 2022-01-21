@@ -1,7 +1,7 @@
 ﻿namespace ZlibNGSharpMinimal.Deflate;
 
 /// <summary>
-/// Enumerates possible values of the <see cref="Core.ZngStream.DataType"/> field.
+/// Enumerates possible values of the <see cref="ZngStream.DataType"/> field.
 /// </summary>
 public enum DeflateDataType
 {
