@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZlibNGSharpMinimal", "ZlibNGSharpMinimal\ZlibNGSharpMinimal.csproj", "{4E6772A2-7061-4590-AC32-908916869E90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{392185F6-7D9B-416B-AA12-137B4DDD9D5D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZlibNGSharpMinimal.Tests", "ZlibNGSharpMinimal.Tests\ZlibNGSharpMinimal.Tests.csproj", "{A50BE847-AE94-48CD-8321-DA07E8794597}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZlibNGSharpMinimal.Native", "ZlibNGSharpMinimal.Native\ZlibNGSharpMinimal.Native.csproj", "{E7EA8C2D-3B56-4605-83D9-278D307F94E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E6772A2-7061-4590-AC32-908916869E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E6772A2-7061-4590-AC32-908916869E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E6772A2-7061-4590-AC32-908916869E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E6772A2-7061-4590-AC32-908916869E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A50BE847-AE94-48CD-8321-DA07E8794597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50BE847-AE94-48CD-8321-DA07E8794597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50BE847-AE94-48CD-8321-DA07E8794597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50BE847-AE94-48CD-8321-DA07E8794597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7EA8C2D-3B56-4605-83D9-278D307F94E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7EA8C2D-3B56-4605-83D9-278D307F94E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7EA8C2D-3B56-4605-83D9-278D307F94E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7EA8C2D-3B56-4605-83D9-278D307F94E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {457EC75B-A72F-46A8-8081-DF27B62281B2}
+	EndGlobalSection
+EndGlobal
