@@ -10,7 +10,7 @@
   <PropertyGroup>
     <Authors>Carl Stephens</Authors>
 
-    <PackageLicenseExpression>ISC</PackageLicenseExpression>
+    <PackageLicenseExpression>Zlib</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/carlst99/ZlibNGSharpMinimal</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/carlst99/ZlibNGSharpMinimal</RepositoryUrl>
