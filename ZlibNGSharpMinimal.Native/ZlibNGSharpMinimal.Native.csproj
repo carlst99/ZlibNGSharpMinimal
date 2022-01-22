@@ -6,6 +6,7 @@
     <Nullable>disable</Nullable>
 
     <!-- Package info -->
+    <PackageId>carlst99.ZlibNGSharp.Native</PackageId>
     <Version>2.0.6</Version>
     <Description>Bundles native zlib-ng libraries for the win-x64 and linux-64 runtimes.</Description>
   </PropertyGroup>
