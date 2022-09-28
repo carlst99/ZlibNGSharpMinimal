@@ -31,8 +31,9 @@ public class RoundTripTests
         deflater.Deflate(Data, deflated);
 
         using ZngInflater inflater = new();
-        inflater.Inflate(deflated, inflated);
+        ulong inflatedLength = inflater.Inflate(deflated, inflated);
 
         Assert.Equal(Data, inflated);
+        Assert.Equal((ulong)Data.Length, inflatedLength);
     }
 }
