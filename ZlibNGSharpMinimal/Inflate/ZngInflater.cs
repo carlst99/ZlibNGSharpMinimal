@@ -43,7 +43,7 @@ public unsafe class ZngInflater : IDisposable
     /// <param name="input">The compressed buffer.</param>
     /// <param name="output">The output buffer.</param>
     /// <exception cref="ZngCompressionException"></exception>
-    public void Inflate(ReadOnlySpan<byte> input, Span<byte> output)
+    public ulong Inflate(ReadOnlySpan<byte> input, Span<byte> output)
     {
         Checks();
 
@@ -63,6 +63,8 @@ public unsafe class ZngInflater : IDisposable
                     GenerateCompressionError(inflateResult, "Failed to inflate");
             }
         }
+
+        return _streamPtr->TotalOut;
     }
 
     /// <summary>
