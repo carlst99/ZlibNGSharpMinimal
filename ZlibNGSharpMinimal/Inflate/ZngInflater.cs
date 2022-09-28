@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using ZlibNGSharpMinimal.Exceptions;
 
 namespace ZlibNGSharpMinimal.Inflate;
@@ -55,15 +51,13 @@ public unsafe class ZngInflater : IDisposable
         {
             fixed (byte* nextOut = output)
             {
-                CompressionResult inflateResult = CompressionResult.StreamEnd;
+                _streamPtr->NextIn = nextIn;
+                _streamPtr->AvailableIn = (uint)input.Length;
 
-                (*_streamPtr).NextIn = nextIn;
-                (*_streamPtr).AvailableIn = (uint)input.Length;
+                _streamPtr->NextOut = nextOut;
+                _streamPtr->AvailableOut = (uint)output.Length;
 
-                (*_streamPtr).NextOut = nextOut;
-                (*_streamPtr).AvailableOut = (uint)output.Length;
-
-                inflateResult = ZngInflateNative.zng_inflate(_streamPtr, InflateFlushMethod.Finish);
+                CompressionResult inflateResult = ZngInflateNative.zng_inflate(_streamPtr, InflateFlushMethod.Finish);
 
                 if (inflateResult is not CompressionResult.StreamEnd)
                     GenerateCompressionError(inflateResult, "Failed to inflate");
@@ -79,11 +73,11 @@ public unsafe class ZngInflater : IDisposable
     {
         Checks();
 
-        (*_streamPtr).NextIn = (byte*)IntPtr.Zero;
-        (*_streamPtr).AvailableIn = 0;
+        _streamPtr->NextIn = null;
+        _streamPtr->AvailableIn = 0;
 
-        (*_streamPtr).NextOut = (byte*)IntPtr.Zero;
-        (*_streamPtr).AvailableOut = 0;
+        _streamPtr->NextOut = null;
+        _streamPtr->AvailableOut = 0;
 
         CompressionResult result = ZngInflateNative.zng_inflateReset(_streamPtr);
         if (result is not CompressionResult.OK)
@@ -123,8 +117,8 @@ public unsafe class ZngInflater : IDisposable
 
     private void GenerateCompressionError(CompressionResult result, string genericMessage)
     {
-        string? msg = (*_streamPtr).ErrorMessage != null
-                ? Marshal.PtrToStringAnsi((IntPtr)(*_streamPtr).ErrorMessage)
+        string? msg = _streamPtr->ErrorMessage != null
+                ? Marshal.PtrToStringAnsi((IntPtr)_streamPtr->ErrorMessage)
                 : genericMessage;
 
         throw new ZngCompressionException(result, msg);

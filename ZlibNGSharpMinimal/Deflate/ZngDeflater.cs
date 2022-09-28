@@ -53,11 +53,11 @@ public unsafe class ZngDeflater : IDisposable
         {
             fixed (byte* nextOut = output)
             {
-                (*_streamPtr).NextIn = nextIn;
-                (*_streamPtr).AvailableIn = (uint)input.Length;
+                _streamPtr->NextIn = nextIn;
+                _streamPtr->AvailableIn = (uint)input.Length;
 
-                (*_streamPtr).NextOut = nextOut;
-                (*_streamPtr).AvailableOut = (uint)output.Length;
+                _streamPtr->NextOut = nextOut;
+                _streamPtr->AvailableOut = (uint)output.Length;
 
                 CompressionResult deflateResult = ZngDeflateNative.zng_deflate(_streamPtr, flushMethod);
                 if (deflateResult is not CompressionResult.StreamEnd)
@@ -65,7 +65,7 @@ public unsafe class ZngDeflater : IDisposable
             }
         }
 
-        return (*_streamPtr).TotalOut;
+        return _streamPtr->TotalOut;
     }
 
     /// <summary>
@@ -76,13 +76,13 @@ public unsafe class ZngDeflater : IDisposable
     {
         Checks();
 
-        (*_streamPtr).NextIn = (byte*)IntPtr.Zero;
-        (*_streamPtr).AvailableIn = 0;
+        _streamPtr->NextIn = null;
+        _streamPtr->AvailableIn = 0;
 
-        (*_streamPtr).NextOut = (byte*)IntPtr.Zero;
-        (*_streamPtr).AvailableOut = 0;
+        _streamPtr->NextOut = null;
+        _streamPtr->AvailableOut = 0;
 
-        (*_streamPtr).TotalOut = UIntPtr.Zero;
+        _streamPtr->TotalOut = UIntPtr.Zero;
 
         CompressionResult result = ZngDeflateNative.zng_deflateReset(_streamPtr);
         if (result is not CompressionResult.OK)
@@ -122,8 +122,8 @@ public unsafe class ZngDeflater : IDisposable
 
     private void GenerateCompressionError(CompressionResult result, string genericMessage)
     {
-        string? msg = (*_streamPtr).ErrorMessage != null
-                ? Marshal.PtrToStringAnsi((IntPtr)(*_streamPtr).ErrorMessage)
+        string? msg = _streamPtr->ErrorMessage != null
+                ? Marshal.PtrToStringAnsi((IntPtr)_streamPtr->ErrorMessage)
                 : genericMessage;
 
         throw new ZngCompressionException(result, msg);
