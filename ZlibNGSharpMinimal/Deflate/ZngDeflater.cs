@@ -45,7 +45,7 @@ public unsafe class ZngDeflater : IDisposable
     /// <param name="flushMethod">The flush method to use.</param>
     /// <returns>The number of deflated bytes that were produced.</returns>
     /// <exception cref="ZngCompressionException"></exception>
-    public nuint Deflate(ReadOnlySpan<byte> input, Span<byte> output, DeflateFlushMethod flushMethod = DeflateFlushMethod.Finish)
+    public ulong Deflate(ReadOnlySpan<byte> input, Span<byte> output, DeflateFlushMethod flushMethod = DeflateFlushMethod.Finish)
     {
         Checks();
 
