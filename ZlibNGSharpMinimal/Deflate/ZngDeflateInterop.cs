@@ -17,8 +17,6 @@ internal static unsafe class ZngDeflateNative
     /// </summary>
     /// <param name="stream">The stream to initialize.</param>
     /// <param name="level">The compression level to operate at.</param>
-    /// <param name="version">The expected version of the zlib library.</param>
-    /// <param name="streamSize">The size of the <see cref="ZngStream"/> object.</param>
     /// <returns>
     /// <see cref="CompressionResult.OK"/> on success,
     /// <see cref="CompressionResult.MemoryError"/> if there was not enough memory,
@@ -26,7 +24,7 @@ internal static unsafe class ZngDeflateNative
     /// or <see cref="CompressionResult.VersionError"/> if the zlib library version is incompatible with the caller's assumed version.
     /// </returns>
     [DllImport(ZngInterop.LibraryName)]
-    public static extern CompressionResult zng_deflateInit_(ZngStream* stream, CompressionLevel level, byte* version, int streamSize);
+    public static extern CompressionResult zng_deflateInit(ZngStream* stream, CompressionLevel level);
 
     [DllImport(ZngInterop.LibraryName)]
     public static extern CompressionResult zng_deflate(ZngStream* stream, DeflateFlushMethod flushMethod);
@@ -46,9 +44,9 @@ internal static unsafe class ZngDeflateNative
 
     /// <summary>
     /// This function is equivalent to <see cref="zng_deflateEnd(ZngStream*)"/>
-    /// followed by <see cref="zng_deflateInit_(ZngStream*, CompressionLevel, byte*, int)"/>,
+    /// followed by <see cref="zng_deflateInit"/>,
     /// but does not free and reallocate the internal decompression state.
-    /// The stream will keep attributes that may have been set by <see cref="zng_deflateInit_(ZngStream*, CompressionLevel, byte*, int)"/>.
+    /// The stream will keep attributes that may have been set by <see cref="zng_deflateInit"/>.
     /// </summary>
     /// <param name="stream">The stream to reset.</param>
     /// <returns>

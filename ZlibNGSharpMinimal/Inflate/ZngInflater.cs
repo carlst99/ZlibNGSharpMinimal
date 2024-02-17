@@ -32,7 +32,7 @@ public unsafe class ZngInflater : IDisposable
         _streamPtr = (ZngStream*)NativeMemory.Alloc((nuint)sizeof(ZngStream));
         Marshal.StructureToPtr(stream, (IntPtr)_streamPtr, false);
 
-        CompressionResult initResult = ZngInflateNative.zng_inflateInit_(_streamPtr, ZngInterop.zlibng_version(), sizeof(ZngStream));
+        CompressionResult initResult = ZngInflateNative.zng_inflateInit(_streamPtr);
         if (initResult is not CompressionResult.OK)
             GenerateCompressionError(initResult, "Failed to initialize");
     }

@@ -16,8 +16,6 @@ internal static unsafe class ZngInflateNative
     /// inflateInit updates them to use default allocation functions.
     /// </summary>
     /// <param name="stream">The stream to initialize.</param>
-    /// <param name="version">The expected version of the zlib library.</param>
-    /// <param name="streamSize">The size of the <see cref="ZngStream"/> object.</param>
     /// <returns>
     /// <see cref="CompressionResult.OK"/> on success,
     /// <see cref="CompressionResult.MemoryError"/> if there was not enough memory,
@@ -25,7 +23,7 @@ internal static unsafe class ZngInflateNative
     /// or <see cref="CompressionResult.StreamError"/> if the parameters are invalid.
     /// </returns>
     [DllImport(ZngInterop.LibraryName)]
-    public static extern CompressionResult zng_inflateInit_(ZngStream* stream, byte* version, int streamSize);
+    public static extern CompressionResult zng_inflateInit(ZngStream* stream);
 
     [DllImport(ZngInterop.LibraryName)]
     public static extern CompressionResult zng_inflate(ZngStream* stream, InflateFlushMethod flushMethod);
@@ -44,7 +42,7 @@ internal static unsafe class ZngInflateNative
 
     /// <summary>
     /// This function is equivalent to <see cref="zng_inflateEnd(ZngStream*)"/>
-    /// followed by <see cref="zng_inflateInit_(ZngStream*, byte*, int)"/>,
+    /// followed by <see cref="zng_inflateInit"/>,
     /// but does not free and reallocate the internal decompression state.
     /// The stream will keep attributes that may have been set by inflateInit2.
     /// </summary>

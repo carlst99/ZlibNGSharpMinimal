@@ -6,12 +6,11 @@
 
     <!-- Package info -->
     <PackageId>carlst99.ZlibNGSharp</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Description>A minimal C# interop wrapper for zlib-ng's basic deflate and inflate operations.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-      - ZngDeflater#Deflate() now returns a ulong value, rather than nuint.
-      - ZngInflater#Inflate() now returns the number of bytes that were inflated.
+      - Upgrade to zlib-ng-2.1.6
     </PackageReleaseNotes>
   </PropertyGroup>
 
