@@ -1,3 +1,11 @@
+> [!IMPORTANT]
+> Since .NET 9.0, zlib-ng is now compiled statically into the dotnet runtime.
+> I am archiving this repository, as the dotnet distribution can instead be used, helping to ensure that the version of zlib-ng being used is well tested and
+> compiled for the various platforms that dotnet supports.
+> 
+> While the dotnet standard library currently only exposes a `Stream`-based deflate/zlib API, you can perform your own interop by defining `LibraryImport`s as per the
+> [internal dotnet interface](https://source.dot.net/#System.IO.Compression/src/libraries/Common/src/Interop/Interop.zlib.cs).
+
 # ZlibNGSharpMinimal
 
 A .NET 6 C# interop wrapper for [zlib-ng's](https://github.com/zlib-ng/zlib-ng) basic inflate and deflate operations.
